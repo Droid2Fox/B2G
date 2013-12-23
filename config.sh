@@ -30,7 +30,7 @@ case `uname` in
 	exit -1
 esac
 
-GITREPO=${GITREPO:-"git://github.com/mozilla-b2g/b2g-manifest"}
+GITREPO=${GITREPO:-"git://github.com/Droid2Fox/b2g-manifest"}
 BRANCH=${BRANCH:-master}
 
 while [ $# -ge 1 ]; do
@@ -146,6 +146,11 @@ case "$1" in
 	repo_sync $1
 	;;
 
+"manta")
+	echo DEVICE=manta >> .tmp-config &&
+	repo_sync $1
+	;;
+
 *)
 	echo "Usage: $0 [-cdflnq] (device name)"
 	echo "Flags are passed through to |./repo sync|."
@@ -157,6 +162,7 @@ case "$1" in
 	echo - nexus-s
 	echo - nexus-s-4g
 	echo - flo "(Nexus 7 2013)"
+	echo - manta "(Nexus 10 2012)"
 	echo - otoro
 	echo - unagi
 	echo - inari
